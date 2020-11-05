@@ -1,5 +1,10 @@
 # Login and Register using CI4
 
+
+## UML Sequence Diagram
+![UML](https://github.com/erisitohang/ci4-auth/blob/main/uml.jpg?raw=true)
+
+
 ## Images
 1. nginx 1.9
 2. php 7.4
