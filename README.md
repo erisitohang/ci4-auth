@@ -12,14 +12,21 @@
 3. redis 6.0
 
 
-## Installation
-1. Install [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/) ;
-2. Start application by running
+## Setup
+1. Copy `env` to `.env` and tailor for your app, specifically the baseURL
+and any database settings.
+
+2. Install [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/) ;
+3. Start application by running
 ```sh
 docker-compose up -d
 ```
+4. Login to docker
+```shell
+ docker exec -it ci4_php_fpm bash
+```
 
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+5. Run migrationn
+```shell
+ docker exec -it ci4_php_fpm php spark migrate 
+```
