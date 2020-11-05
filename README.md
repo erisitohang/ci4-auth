@@ -2,7 +2,7 @@
 
 
 ## UML Sequence Diagram
-![UML](https://github.com/erisitohang/ci4-auth/blob/main/uml.jpg?raw=true)
+![UML](https://github.com/erisitohang/ci4-auth/blob/main/uml.png?raw=true)
 
 
 ## Images
