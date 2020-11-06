@@ -2,6 +2,7 @@
 
 use CodeIgniter\Test\FeatureTestCase;
 use App\Models\UserModel;
+
 class AuthControllerTest extends FeatureTestCase
 {
     public function testRegisterPage()
@@ -14,7 +15,18 @@ class AuthControllerTest extends FeatureTestCase
         $result->assertSee('Password');
     }
 
-    public function testRegister()
+    public function testLoginPage()
+    {
+        $result = $this->withRoutes([])
+            ->get('/login');
+
+        $result->assertOK();
+        $result->assertSee('LogIn');
+        $result->assertSee('Email');
+        $result->assertSee('Password');
+    }
+
+    public function testRegisterAndLogin()
     {
         $result = $this->withRoutes([])
             ->post('/register',
@@ -31,5 +43,16 @@ class AuthControllerTest extends FeatureTestCase
         $model = new UserModel();
         $objects = $model->findAll();
         $this->assertCount(1, $objects);
+
+        $result = $this->withRoutes([])
+            ->post('/login',
+                [
+                    'email' => 'johndoe@example.com',
+                    'password' => 'Password1',
+                ]
+            );
+        $result->assertOK();
+        $this->assertEquals($result->getRedirectUrl(), site_url('/'));
+
     }
 }

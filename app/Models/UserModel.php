@@ -25,6 +25,10 @@ class UserModel extends Model
             'email' => 'trim|required|valid_email|is_unique[users.email]',
             'password' => 'trim|required|min_length[6]|max_length[25]|strong_password',
             'password_confirm' => 'matches[password]'
+        ],
+        'login' => [
+            'email' => 'trim|required|valid_email',
+            'password' => 'trim|required|min_length[6]|max_length[25]',
         ]
     ];
 

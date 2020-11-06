@@ -34,6 +34,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/register', 'AuthController::register', ['as' => 'register']);
 $routes->post('/register', 'AuthController::storeRegister');
 $routes->get('/login', 'AuthController::login', ['as' => 'login']);
+$routes->post('/login', 'AuthController::postLogin');
+$routes->get('/logout', 'AuthController::logout', ['as' => 'logout']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
