@@ -36,6 +36,16 @@ $routes->post('/register', 'AuthController::storeRegister');
 $routes->get('/login', 'AuthController::login', ['as' => 'login']);
 $routes->post('/login', 'AuthController::postLogin');
 $routes->get('/logout', 'AuthController::logout', ['as' => 'logout']);
+$routes->get('aute', 'AuthController::logout', ['as' => 'logout']);
+$routes->group('/api/v1', function ($routes) {
+    $routes->group('auth', function ($routes) {
+        $routes->add('register', 'V1\AuthController::register');
+        $routes->add('login', 'V1\AuthController::login');
+    });
+    $routes->group('user', function ($routes) {
+        $routes->add('me', 'V1\UserController::me');
+    });
+});
 /**
  * --------------------------------------------------------------------
  * Additional Routing
