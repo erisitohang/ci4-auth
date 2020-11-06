@@ -30,3 +30,8 @@ docker-compose up -d
 ```shell
  docker exec -it ci4_php_fpm php spark migrate 
 ```
+
+## Run Test
+```shell
+ docker exec -it ci4_php_fpm ./vendor/bin/phpunit 
+```
