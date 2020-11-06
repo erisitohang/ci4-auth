@@ -13,7 +13,7 @@ class Cache extends BaseConfig
 	| it is not available, the $backupHandler will be used in its place.
 	|
 	*/
-	public $handler = 'file';
+	public $handler = 'redis';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ class Cache extends BaseConfig
 	|
 	*/
 	public $redis = [
-		'host'     => '127.0.0.1',
+		'host'     => 'redis',
 		'password' => null,
 		'port'     => 6379,
 		'timeout'  => 0,

@@ -18,7 +18,7 @@
                             <div class="form-group row">
                                 <label for="phone_number" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" required value="JohnDoe1">
+                                    <input type="password" id="password" class="form-control" name="password" required value="Password1">
                                 </div>
                             </div>
                             <div class="col-md-6 offset-md-4">

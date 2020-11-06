@@ -47,17 +47,25 @@ class AuthController extends BaseController
         $user = $users->where('email', $this->request->getPost('email'))->first();
 
         if (!$user || !password_verify($this->request->getPost('password'), $user['password'])) {
+            $data = [
+                'email' => $this->request->getPost('email')
+            ];
+            $this->cache('login', $data);
             return redirect()->to('login')->withInput()->with(
                 'error',
                 'The email address or password is incorrect. Please retry!'
             );
         }
         $this->session->set('isLoggedIn', true);
-        $this->session->set('user', [
+        $data =  [
             'id' 			=> $user['id'],
             'name' 			=> $user['name'],
             'email' 		=> $user['email']
-        ]);
+        ];
+        $this->session->set('user', $data);
+
+        $this->cache('login', $data);
+
         return redirect('/');
     }
 
@@ -81,8 +89,11 @@ class AuthController extends BaseController
             'password_confirm'	=> $this->request->getPost('password_confirm'),
         ];
         if (!$userModel->save($user)) {
+            $this->cache('login', $user, 'failed');
             return redirect()->back()->withInput()->with('errors', $userModel->errors());
         }
+
+        $this->cache('login', $user);
 
         return redirect()->to('login')->with('success', 'Registration Successful. Please Login');
     }

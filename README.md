@@ -35,3 +35,28 @@ docker-compose up -d
 ```shell
  docker exec -it ci4_php_fpm ./vendor/bin/phpunit 
 ```
+
+## REST API
+### Registration
+POST /api/v1/auth/register
+#### Request
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "Password1",
+  "password_confirm": "Password1"
+}
+```
+### Login
+POST /api/v1/auth/login
+#### Request
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "Password1",
+}
+```
+
+
+

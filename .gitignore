@@ -128,3 +128,6 @@ nb-configuration.xml
 
 
 docker/mysql/data/
+
+/docker/redis/*
+!/docker/redis/.gitkeep

@@ -19,6 +19,7 @@ use CodeIgniter\Controller;
 class BaseController extends Controller
 {
 
+    protected $cacheKey = 'web_action';
 	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available
@@ -42,5 +43,14 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 	}
+
+	protected function cache($action, $data, $status='ok')
+    {
+        cache()->save(
+            $this->cacheKey . '_' . $action . '_' . time(),
+            json_encode(['data' => $data,  'status' => $status]),
+            0
+        );
+    }
 
 }
